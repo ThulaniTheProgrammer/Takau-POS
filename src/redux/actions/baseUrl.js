@@ -1,1 +1,1 @@
-export const baseUrl='https://takau-backend-production.up.railway.app/api/v1/'
+export const baseUrl='https://takau-backend-production-1ffd.up.railway.app/api/v1/'

@@ -7,13 +7,14 @@ export const adminsignin= (email,password)=>async(dispatch)=>{
     
     dispatch({type:ADMIN_SIGNIN_REQUEST,payload:{email,password}})
     try {
-        const {data}= await axios.post("http://localhost:5000/api/v1/login",{email,password});
+        const {data}= await axios.post(`${baseUrl}admin/signin`,{email,password});
         dispatch({type:ADMIN_SIGNIN_SUCCESS,payload:data});
         localStorage.setItem("adminInfo",JSON.stringify(data))
     } catch (error) {
+        console.log(error);
         dispatch({type:ADMIN_SIGNIN_FAIL,
         payload:
-        error.response&& error.response.data.message
+        error.response.data.msg&& error.response.data.message
         ? error.response.data.message
         : error.message
         })

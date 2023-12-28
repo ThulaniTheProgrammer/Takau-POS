@@ -33,6 +33,7 @@ function submit(e){
     if (adminInfo) {
     alert("Adminstrator has been registered succesfully now you are being redirected to the admins page")
     navigate("/Adminstrator")
+    window.location.reload()
     }
    
     

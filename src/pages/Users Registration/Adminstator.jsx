@@ -37,6 +37,7 @@ let rows= data
 dispatch(getadmins())
   },[])
 
+  
   return (
    
 

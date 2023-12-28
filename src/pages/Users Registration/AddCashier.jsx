@@ -34,7 +34,8 @@ function AddCashier() {
    
       if (cashierInfo) {
     alert("Cashier has been registered succesfully now you are being redirected to the admins page")
-    navigate("/Adminstrator")
+    navigate("/Cashier")
+    window.location.reload()
       }
      
      

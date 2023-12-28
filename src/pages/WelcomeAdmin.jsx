@@ -4,12 +4,15 @@ import CarName from '../components/carName';
 
 import { useDispatch, useSelector } from 'react-redux';
 import ManagerMain from '../components/ManagerMain';
+import { adminsignin } from '../redux/actions/adminActions';
 
 
 
 
 export default function WelcomeAdmin() {
-  const {user,isLoading,isError,isSuccess,message}= useSelector((state)=>state.auth);
+  
+  const adminSignin= useSelector((state)=>state.adminSignin);
+ const  {adminInfo,loading,success,error}=adminSignin;
     const navigate = useNavigate();
     const dispatch = useDispatch();
 const [email, setemail] = useState("");
@@ -17,21 +20,20 @@ const [password, setpassword] = useState("");
 async function submitForm(e) {
   e.preventDefault()
 
-    const userData={email,password}
-  //  dispatch(adminlogin(userData))
+ 
+   dispatch(adminsignin(email,password))
   
 
   
    
   }
   useEffect(() => {
-  
-    if (isSuccess||user) {
-      navigate("/Mainheader")
+    
+    if (adminInfo) {
+      navigate("/Product")
     }
-    
-    
-    }, [user,isError,isSuccess,message,navigate,dispatch])
+
+    }, [navigate,dispatch])
     
    // onClick={() => navigate("/Mainheader")}  
 
@@ -46,11 +48,11 @@ async function submitForm(e) {
       
       {
        ///This is subject to change.I have done this as an example of how do it with Redux you can do it in the way you are comfortable with.
-       isLoading ? <h2>
+       loading ? <h2>
          Loading....
        </h2> :
-      isError ? <h2>
-       {message}
+      error ? <h2>
+       {error}
        </h2>
        : null
       }
@@ -65,7 +67,7 @@ async function submitForm(e) {
         <input    onChange={(e)=>setpassword(e.target.value)}  type="password" id="password" name="password" required className="w-3/4 p-2 border border-black rounded" />
       </div>
       <div className=" text-white flex justify-center">
-        <button type="submit"  onClick={() => navigate("/ManagerMain")}       className="px-4 py-2 bg-red-400 text-white rounded ">Log In</button>
+        <button type="submit"        className="px-4 py-2 bg-red-400 text-white rounded ">Log In</button>
       </div>
      </form>
   </div>

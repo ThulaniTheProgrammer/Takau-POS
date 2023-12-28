@@ -16,7 +16,7 @@ const initialState={
     },
     adminSignin:{
       
-        userInfo:localStorage.getItem('adminInfo') ? JSON.parse(localStorage.getItem('adminInfo')): null
+        adminInfo:localStorage.getItem('adminInfo') ? JSON.parse(localStorage.getItem('adminInfo')): null
     },
 
 
